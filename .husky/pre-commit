@@ -1,4 +1,13 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx lint-staged
+echo "Running pre-commit hooks..."
+
+# Ejecuta lint-staged para formatear y lintar los archivos staged
+npx lint-staged || { echo "Linting/Formatting failed. Aborting commit."; exit 1; }
+
+# Ejecuta las pruebas unitarias
+echo "Running unit tests..."
+ng test --watch=false --browsers=ChromeHeadless || { echo "Unit tests failed. Aborting commit."; exit 1; }
+
+echo "Pre-commit hooks passed."
