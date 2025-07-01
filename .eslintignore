@@ -1,0 +1,17 @@
+# Configuration files
+.eslintrc.json
+angular.json
+package.json
+package-lock.json
+
+# Build outputs
+dist/
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
